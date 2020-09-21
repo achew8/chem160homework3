@@ -3,8 +3,8 @@ from math import exp
 Temp=2.3              # Temperature
 n=20                  # Sites per edge for n x n system
 n2=n*n                # Precalculate n*n
-nlist=list(range(n))  # List of sites
-ntrials=200000        # Number Trials
+nlist=list(range(n))  # List of sites 
+ntrials=200000        # Number Trials 
 nequil=100000         # Equilibration steps
 
 Emax=-5.0
@@ -29,14 +29,14 @@ for trial in range(1,(ntrials+nequil+1)):
                  spins[(i+1)%n][j]+spins[(i+-1+n)%n][j]))
 
     #Flip the spin using Metropolis MC
-    if exp(-deltaE/Temp)>random():
+    if exp(-deltaE/Temp)>random():   
         spins[i][j]=-spins[i][j]
     else:
         deltaE=0.0
 
-    # Calculate system energy ONCE
+    # Calculate system energy ONCE 
     if trial == nequil:
-        energy=0.0
+        energy=0.0  
         for i in range(n):
             for j in range(n):
                 energy-=(spins[i][j]*
@@ -50,7 +50,7 @@ for trial in range(1,(ntrials+nequil+1)):
         if energy > Emax:
             Emax=energy
         if energy < Emin:
-            Emax=energy
+            Emin=energy
         E_sum+=energy
         E2_sum+=energy*energy
 
